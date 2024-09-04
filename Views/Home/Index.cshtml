@@ -1,0 +1,50 @@
+﻿@* @{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div> *@
+
+
+@model IEnumerable<MVCCoreDemo.Models.Student>
+
+<h2>Student List</h2>
+
+<p>
+    <a asp-action="Create">Create New Student</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Department</th>
+            <th>City</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.Name</td>
+                <td>@student.Gender</td>
+                <td>@student.Department</td>
+                <td>@student.City</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@student.StudId">Edit</a>
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@student.StudId">Details</a>
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@student.StudId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
